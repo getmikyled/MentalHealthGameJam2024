@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4213da26d31800344a588e56ba3ea1a1, type: 3}
-  m_Name: CleanBed
+  m_Name: WashDishes
   m_EditorClassIdentifier: 
-  name: Make your bed
-  details: Make up your bed
+  name: Wash the Dishes
+  details: Go to the kitchen and wash the dishes

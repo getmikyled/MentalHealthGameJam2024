@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4213da26d31800344a588e56ba3ea1a1, type: 3}
-  m_Name: StuffAway
+  m_Name: CleanBathroom
   m_EditorClassIdentifier: 
-  name: Put your stuff away
-  details: Put your stuff in the Living Room Away
+  name: Clean the Bathroom
+  details: Go to the bathroom and mop it

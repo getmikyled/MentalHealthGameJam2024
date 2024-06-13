@@ -13,11 +13,12 @@ namespace MentalHealthGJ_2024
     
     ///-////////////////////////////////////////////////////////////////////////
     ///
-    public class PlayerCharacterController : MonoBehaviour
+    public partial class PlayerCharacterController : MonoBehaviour
     {
         // SINGLETON
         public static PlayerCharacterController instance;
         
+        [Header("Movement")]
         [Tooltip("The speed of the player when walking")]
         [SerializeField] private float _walkingSpeed = 5f;
         
@@ -35,7 +36,7 @@ namespace MentalHealthGJ_2024
         {
             if (instance != null && instance != this)
             {
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
             else
             {
@@ -55,6 +56,13 @@ namespace MentalHealthGJ_2024
         private void CacheComponents()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
+        }
+
+        ///-////////////////////////////////////////////////////////////////////////
+        ///
+        private void Update()
+        {
+            OnUpdateInteract();
         }
         
         ///-////////////////////////////////////////////////////////////////////////

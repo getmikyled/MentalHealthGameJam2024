@@ -8,6 +8,8 @@ namespace MentalHealthGJ_2024
     ///
     public class Activity : MonoBehaviour
     {
+        [SerializeField] private float addedStressOnCompletion = 0f;
+        
         private bool isPeformingActivity = false;
         
         ///-////////////////////////////////////////////////////////////////////////
@@ -27,7 +29,8 @@ namespace MentalHealthGJ_2024
         ///
         protected virtual void OnStartActivity()
         {
-            
+            Debug.Log("Started activity.");
+            OnCompleteActivity();
         }
         
         ///-////////////////////////////////////////////////////////////////////////
@@ -44,7 +47,7 @@ namespace MentalHealthGJ_2024
         ///
         protected virtual void OnCompleteActivity()
         {
-            
+            PlayerStressController.instance.UpdateStressLevels(addedStressOnCompletion);
         }
     }
 }

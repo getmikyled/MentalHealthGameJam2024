@@ -1,17 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
+using GetMikyled;
 using UnityEngine;
 
 namespace MentalHealthGJ_2024
 {
+    ///-////////////////////////////////////////////////////////////////////////
+    ///
     public partial class PlayerCharacterController
     {
         [Header("Interaction")]
         [SerializeField] private KeyCode interactKey;
+        
+        ///-////////////////////////////////////////////////////////////////////////
+        ///
         protected void OnUpdateInteract()
         {
-            // TO DO: Check for input to see if the player attempted to interact.
-            // Use OverlapColliders to detect if any collisions have an activity. 
+            if (Input.GetKeyDown(interactKey))
+            {
+                Collider2D[] overlapColliders = GetOverlapColliders();
+                foreach (Collider2D collider in overlapColliders)
+                {
+                    Activity activity = collider.transform.GetComponent<Activity>();
+                    if (activity != null)
+                    {
+                        activity.StartActivity();
+                        break;
+                    }
+                }
+            }
+        }
+
+        ///-////////////////////////////////////////////////////////////////////////
+        ///
+        private Collider2D[] GetOverlapColliders()
+        {
+            Vector2 capsulePosition = transform.position.AsVector2() + _capsuleCollider.offset;
+            Collider2D[] results = new Collider2D[5];
+            Physics2D.OverlapCapsuleNonAlloc(capsulePosition, _capsuleCollider.size, _capsuleCollider.direction, 0, results);
+            return results;
         }
     }
 }

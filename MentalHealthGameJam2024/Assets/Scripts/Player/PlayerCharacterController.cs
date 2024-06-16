@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build;
 using UnityEngine;
 
 namespace MentalHealthGJ_2024
@@ -23,12 +24,13 @@ namespace MentalHealthGJ_2024
         [SerializeField] private float _walkingSpeed = 5f;
         
         private PlayerMovementState _playerMovementState = PlayerMovementState.Walking;
-        
+
+        private CapsuleCollider2D _capsuleCollider;
         private Rigidbody2D _rigidbody;
 
         private Vector2 _movementDirection = Vector2.zero;
 
-        private bool movementPaused = false;
+        private bool _paused;
 
         ///-////////////////////////////////////////////////////////////////////////
         ///
@@ -56,12 +58,19 @@ namespace MentalHealthGJ_2024
         private void CacheComponents()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
+            _capsuleCollider = GetComponent<CapsuleCollider2D>();
         }
 
         ///-////////////////////////////////////////////////////////////////////////
         ///
         private void Update()
         {
+            // Do not update if game is paused.
+            if (_paused)
+            {
+                return;
+            }
+            
             OnUpdateInteract();
         }
         
@@ -69,6 +78,12 @@ namespace MentalHealthGJ_2024
         ///
         private void FixedUpdate()
         {
+            // Do not update if game is paused.
+            if (_paused)
+            {
+                return;
+            }
+            
             UpdatePlayerMovementState();
         }
 

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 765138156623140}
   - component: {fileID: 3483237141550335848}
+  - component: {fileID: 6804206013015114834}
   m_Layer: 0
   m_Name: -- MANAGERS --
   m_TagString: Untagged
@@ -44,3 +45,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ba000194e67a140a06952f8bfe58b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stressors:
+  - {fileID: 0}
+  - {fileID: 0}
+  _taskUI: {fileID: 0}
+  _thoughtBubblePrefab: {fileID: 4933655312124417680, guid: 5a7ee4b7126212042bf7c45e7dac3ec5, type: 3}
+--- !u!114 &6804206013015114834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3299866653439268354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6465e45889258e04ea4eb0fce518c855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stressThresholdMin: 0
+  stressThresholdMax: 10

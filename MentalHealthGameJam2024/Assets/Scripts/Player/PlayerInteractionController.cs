@@ -19,13 +19,16 @@ namespace MentalHealthGJ_2024
             if (Input.GetKeyDown(interactKey))
             {
                 Collider2D[] overlapColliders = GetOverlapColliders();
-                foreach (Collider2D collider in overlapColliders)
+                if (overlapColliders != null && overlapColliders.Length > 0)
                 {
-                    Activity activity = collider.transform.GetComponent<Activity>();
-                    if (activity != null)
+                    foreach (Collider2D collider in overlapColliders)
                     {
-                        activity.StartActivity();
-                        break;
+                        Activity activity = collider.transform.GetComponent<Activity>();
+                        if (activity != null)
+                        {
+                            activity.StartActivity();
+                            break;
+                        }
                     }
                 }
             }

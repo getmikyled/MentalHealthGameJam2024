@@ -9,8 +9,10 @@ namespace MentalHealthGJ_2024
     public class Activity : MonoBehaviour
     {
         [SerializeField] private float addedStressOnCompletion = 0f;
-        
-        private bool isPeformingActivity = false;
+
+
+        protected bool _isActive = false;
+        protected bool isPeformingActivity = false;
         
         ///-////////////////////////////////////////////////////////////////////////
         ///
@@ -19,8 +21,20 @@ namespace MentalHealthGJ_2024
             OnUpdateActivity();
         }
 
+        ///-////////////////////////////////////////////////////////////////////////
+        ///
+        public virtual void SetActive(bool active)
+        {
+            _isActive = active;
+        }
+
         public virtual void StartActivity()
         {
+            if (_isActive == false)
+            {
+                return;
+            }
+            
             isPeformingActivity = true;
             OnStartActivity();
         }
@@ -47,7 +61,7 @@ namespace MentalHealthGJ_2024
         ///
         protected virtual void OnCompleteActivity()
         {
-            PlayerStressController.instance.UpdateStressLevels(addedStressOnCompletion);
+            StressManager.instance.UpdateStressLevels(addedStressOnCompletion);
         }
     }
 }

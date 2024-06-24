@@ -10,10 +10,18 @@ namespace MentalHealthGJ_2024
     {
         ///-////////////////////////////////////////////////////////////////////////
         ///
+        protected virtual void Start()
+        {
+            SetActive(true);
+        }
+        
+        ///-////////////////////////////////////////////////////////////////////////
+        ///
         protected override void OnCompleteActivity()
         {
             base.OnCompleteActivity();
-            TaskManager.instance.ActivateNextTask();
+            
+            TaskManager.instance.ActivateNextStressor();
         }
     }
 }

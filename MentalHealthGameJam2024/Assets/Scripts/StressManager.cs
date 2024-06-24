@@ -7,9 +7,9 @@ namespace MentalHealthGJ_2024
 {
     ///-////////////////////////////////////////////////////////////////////////
     ///
-    public class PlayerStressController : MonoBehaviour
+    public class StressManager : MonoBehaviour
     {
-        public static PlayerStressController instance;
+        public static StressManager instance;
 
         [SerializeField] private float stressThresholdMin = 0f;
         [SerializeField] private float stressThresholdMax = 10f;

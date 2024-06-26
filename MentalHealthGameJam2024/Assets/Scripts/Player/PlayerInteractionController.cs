@@ -27,7 +27,14 @@ namespace MentalHealthGJ_2024
                         if (activity != null)
                         {
                             activity.StartActivity();
-                            break;
+                            return;
+                        }
+
+                        Teleporter teleporter = collider.transform.GetComponent<Teleporter>();
+                        if (teleporter != null)
+                        {
+                            teleporter.Teleport();
+                            return;
                         }
                     }
                 }

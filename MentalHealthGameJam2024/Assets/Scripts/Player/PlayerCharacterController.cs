@@ -132,8 +132,7 @@ namespace MentalHealthGJ_2024
         {
             // Get Movement Direction
             float horizontalDirection = Input.GetAxis("Horizontal");
-            float verticalDirection = Input.GetAxis("Vertical");
-            SetMovementDirection(new Vector2(horizontalDirection, verticalDirection).normalized);
+            SetMovementDirection(new Vector2(horizontalDirection, 0f).normalized);
             
             _rigidbody.velocity = _movementDirection * (_walkingSpeed * Time.fixedDeltaTime);
         }

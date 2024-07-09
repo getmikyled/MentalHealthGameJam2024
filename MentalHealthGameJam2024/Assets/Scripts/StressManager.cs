@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace MentalHealthGJ_2024
 {
@@ -13,8 +14,12 @@ namespace MentalHealthGJ_2024
 
         [SerializeField] private float stressThresholdMin = 0f;
         [SerializeField] private float stressThresholdMax = 10f;
+        [SerializeField] private float startingStress = 5f;
 
+        private float stressRange => stressThresholdMax - stressThresholdMin;
         private float currentStressLevel = 5f;
+
+        public UnityEvent<float> onUpdateStress = new UnityEvent<float>();
         
         ///-////////////////////////////////////////////////////////////////////////
         ///
@@ -29,8 +34,11 @@ namespace MentalHealthGJ_2024
             {
                 instance = this;
             }
-        }
 
+            currentStressLevel = startingStress;
+            onUpdateStress.Invoke(currentStressLevel / stressRange);
+        }
+        
         ///-////////////////////////////////////////////////////////////////////////
         ///
         public void UpdateStressLevels(float stress)
@@ -40,6 +48,8 @@ namespace MentalHealthGJ_2024
             // Update stress levels to fit in threshold.
             currentStressLevel = Mathf.Max(stressThresholdMin, currentStressLevel);
             currentStressLevel = Mathf.Min(stressThresholdMax, currentStressLevel);
+            print(currentStressLevel);
+            onUpdateStress.Invoke(currentStressLevel / stressRange);
         }
     }
 }

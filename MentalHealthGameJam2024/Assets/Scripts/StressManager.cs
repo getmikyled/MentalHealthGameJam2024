@@ -34,7 +34,12 @@ namespace MentalHealthGJ_2024
             {
                 instance = this;
             }
+        }
 
+        ///-////////////////////////////////////////////////////////////////////////
+        ///
+        private void Start()
+        {
             currentStressLevel = startingStress;
             onUpdateStress.Invoke(currentStressLevel / stressRange);
         }

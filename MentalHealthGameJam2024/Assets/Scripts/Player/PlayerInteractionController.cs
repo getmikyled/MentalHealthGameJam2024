@@ -23,14 +23,14 @@ namespace MentalHealthGJ_2024
                 {
                     foreach (Collider2D collider in overlapColliders)
                     {
-                        Activity activity = collider.transform.GetComponent<Activity>();
+                        Activity activity = collider.GetComponent<Activity>();
                         if (activity != null)
                         {
                             activity.StartActivity();
                             return;
                         }
 
-                        Teleporter teleporter = collider.transform.GetComponent<Teleporter>();
+                        Teleporter teleporter = collider.GetComponent<Teleporter>();
                         if (teleporter != null)
                         {
                             teleporter.Teleport();
